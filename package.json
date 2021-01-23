@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-bitcoin",
+  "version": "1.0.0",
+  "description": "A simple Mercado Bitcoin trader bot.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "crypto": "^1.0.1",
+    "dotenv-safe": "^8.2.0",
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luiztools/nodejs-bitcoin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luiztools/nodejs-bitcoin/issues"
+  },
+  "homepage": "https://github.com/luiztools/nodejs-bitcoin#readme"
+}
