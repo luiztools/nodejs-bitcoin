@@ -29,7 +29,7 @@ class MercadoBitcoin {
 
     async call(method) {
 
-        let config = {
+        const config = {
             headers: {
                 'Accept': 'application/json',
             }
@@ -85,7 +85,7 @@ class MercadoBitcoinTrade {
             .update(`${ENDPOINT_TRADE_PATH}?${queryString}`)
             .digest('hex');
 
-        let config = {
+        const config = {
             headers: {
                 'TAPI-ID': this.config.KEY,
                 'TAPI-MAC': signature
@@ -94,7 +94,7 @@ class MercadoBitcoinTrade {
 
         const response = await axios.post(ENDPOINT_TRADE_API, queryString, config);
         if (response.data.error_message) throw new Error(response.data.error_message);
-        return response.data;
+        return response.data.response_data;;
     }
 }
 
