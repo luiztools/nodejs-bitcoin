@@ -12,33 +12,37 @@ const tradeApi = new MercadoBitcoinTrade({
 });
 
 async function getQuantity(coin, price, isBuy) {
-    price = parseFloat(price);
     coin = isBuy ? 'brl' : coin.toLowerCase();
 
     const data = await tradeApi.getAccountInfo();
-    let balance = parseFloat(data.balance[coin].available).toFixed(5);
-    balance = parseFloat(balance);
+    const balance = parseFloat(data.balance[coin].available).toFixed(8);
+    if (!isBuy) return balance;
 
-    if (isBuy && balance < 50) return console.log('Sem saldo disponível para comprar!');
+    if (balance < 100) return false;
     console.log(`Saldo disponível de ${coin}: ${balance}`);
 
-    if (isBuy) balance = parseFloat((balance / price).toFixed(5));
-    return parseFloat(balance) - 0.00001;//tira a diferença que se ganha no arredondamento
+    price = parseFloat(price);
+    let qty = parseFloat((balance / price).toFixed(8));
+    return qty - 0.00000001;//tira a diferença que se ganha no arredondamento
 }
 
 setInterval(async () => {
     const response = await infoApi.ticker();
     console.log(response.ticker);
-    if (response.ticker.sell > 170000)
+    if (response.ticker.sell > 333000)
         return console.log('Ainda muito alto, vamos esperar pra comprar depois.');
 
     try {
         const qty = await getQuantity('BRL', response.ticker.sell, true);
+        if (!qty) return console.log('Saldo insuficiente para comprar!');
+
         const data = await tradeApi.placeBuyOrder(qty, response.ticker.sell);
         console.log('Ordem de compra inserida no livro. ', data);
 
-        //operando em STOP de 3%
-        const data2 = await tradeApi.placeSellOrder(data.quantity, response.ticker.sell * parseFloat(process.env.PROFITABILITY));
+        const buyPrice = parseFloat(response.ticker.sell);
+        const profitability = parseFloat(process.env.PROFITABILITY);//10% = 1.1
+        const sellQty = await getQuantity('BTC', 1, false);
+        const data2 = await tradeApi.placeSellOrder(sellQty, buyPrice * profitability);
         console.log('Ordem de venda inserida no livro. ', data2);
 
     } catch (error) {

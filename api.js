@@ -36,7 +36,8 @@ class MercadoBitcoin {
         }
 
         try {
-            const response = await axios.get(ENDPOINT_API + this.config.CURRENCY + '/' + method, config);
+            const url = `${ENDPOINT_API}${this.config.CURRENCY}/${method}`;
+            const response = await axios.get(url, config);
             return response.data;
         } catch (error) {
             console.error(error);
@@ -75,10 +76,10 @@ class MercadoBitcoinTrade {
         return this.call('cancel_order', { coin_pair: `BRL${this.config.CURRENCY}`, order_id: orderId });
     }
 
-    async call(method, parameters) {
+    async call(tapi_method, parameters) {
 
-        const now = Math.round(new Date().getTime() / 1000);
-        let queryString = qs.stringify({ 'tapi_method': method, 'tapi_nonce': now });
+        const tapi_nonce = new Date().getTime();
+        let queryString = qs.stringify({ tapi_method, tapi_nonce });
         if (parameters) queryString += `&${qs.stringify(parameters)}`;
 
         const signature = crypto.createHmac('sha512', this.config.SECRET)
