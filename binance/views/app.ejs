@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Trader Bot</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Trader Bot</h1>
+            <p>Last update at: <span id="lastUpdate">
+                    <%= lastUpdate %>
+                </span></p>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-3 alert alert-info" role="alert">
+                <h2>Wallet</h2>
+                <ul id="coins">
+                    <li><strong>BTC:</strong><span>1</span></li>
+                    <li><strong>BRL:</strong><span>2</span></li>
+                </ul>
+            </div>
+
+            <div class="col-3 alert alert-success offset-md-1" role="alert">
+                <h2>Market</h2>
+                <p><strong>Symbol:</strong> <span>
+                        <%= symbol %>
+                    </span></p>
+                <p><strong>Profitability:</strong> <span>
+                        <%= profitability %>
+                    </span></p>
+                <p><strong>Sell Price:</strong><span id="sell">1</span></p>
+                <p><strong>Buy Price:</strong><span id="buy">1</span></p>
+            </div>
+        </div>
+        <hr />
+        <h2>Timeline</h2>
+        <ul id="timeline" style="list-style: none;">
+            <li class="alert alert-secondary" role="alert">Started!</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script>
+        setInterval(() => {
+            fetch('/data')
+                .then(response => response.json())
+                .then(json => {
+                    const sell = document.getElementById('sell');
+                    sell.innerText = json.sell;
+
+                    const buy = document.getElementById('buy');
+                    buy.innerText = json.buy;
+                    console.log(json);
+
+                    const coins = document.getElementById('coins');
+                    coins.innerHTML = "";
+                    json.coins.forEach(coin => {
+                        coins.innerHTML += `<li><strong>${coin.asset}:</strong>${coin.free}</li>`
+                    })
+
+                    const timeline = document.getElementById('timeline');
+                    const date = new Date();
+                    if (json.buyOrder) {
+                        const { id, status } = json.buyOrder;
+                        timeline.innerHTML = `<li class="alert alert-secondary" role="alert">Buy Order: ${status} ${id} at ${date}</li>` + timeline.innerHTML;
+                    }
+
+                    if (json.sellOrder) {
+                        const { id, status } = json.sellOrder;
+                        timeline.innerHTML = `<li class="alert alert-secondary" role="alert">Sell Order: ${status} ${id} at ${date}</li>` + timeline.innerHTML;
+                    }
+                });
+        }, <%= interval %>)
+    </script>
+</body>
+
+</html>

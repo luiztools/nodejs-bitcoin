@@ -18,18 +18,22 @@ setInterval(async () => {
     console.log(coins);
 
     const sellPrice = parseFloat(mercado.asks[0][0]);
-    //const carteiraBUSD = parseFloat(coins.find(c => c.asset === 'BUSD').free);
+    const carteiraUSD = parseFloat(coins.find(c => c.asset.endsWith('USD')).free);
     if (sellPrice < 1000) {
-        console.log('Preço está bom. Comprando!');
-        const buyOrder = await api.newOrder(symbol, 1);
-        //console.log(buyOrder);//descomente para investigar problemas
-        console.log(`orderId: ${buyOrder.orderId}`);
-        console.log(`status: ${buyOrder.status}`);
+        console.log('Preço está bom. Verificando se tenho grana...');
+        if (sell <= carteiraUSD) {
 
-        console.log(`Posicionando venda. Ganho de ${profitability}`);
-        const sellOrder = await api.newOrder(symbol, 1, sellPrice * profitability, 'SELL', 'LIMIT');
-        //console.log(sellOrder);//descomente para investigar problemas
-        console.log(`orderId: ${sellOrder.orderId}`);
-        console.log(`status: ${sellOrder.status}`);
+            console.log('Tenho! Comprando!');
+            const buyOrder = await api.newOrder(symbol, 1);
+            //console.log(buyOrder);//descomente para investigar problemas
+            console.log(`orderId: ${buyOrder.orderId}`);
+            console.log(`status: ${buyOrder.status}`);
+
+            console.log(`Posicionando venda. Ganho de ${profitability}`);
+            const sellOrder = await api.newOrder(symbol, 1, sellPrice * profitability, 'SELL', 'LIMIT');
+            //console.log(sellOrder);//descomente para investigar problemas
+            console.log(`orderId: ${sellOrder.orderId}`);
+            console.log(`status: ${sellOrder.status}`);
+        }
     }
 }, process.env.CRAWLER_INTERVAL);
