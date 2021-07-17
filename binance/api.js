@@ -24,13 +24,14 @@ async function privateCall(path, data = {}, method = 'GET') {
         throw new Error('Preencha corretamente sua API KEY e SECRET KEY');
 
     const timestamp = Date.now();
+    const recvWindow = 60000;//máximo permitido, default 5000
 
     const signature = crypto
         .createHmac('sha256', apiSecret)
-        .update(`${queryString.stringify({ ...data, timestamp })}`)
+        .update(`${queryString.stringify({ ...data, timestamp, recvWindow })}`)
         .digest('hex');
 
-    const newData = { ...data, timestamp, signature };
+    const newData = { ...data, timestamp, recvWindow, signature };
     const qs = `?${queryString.stringify(newData)}`;
 
     try {

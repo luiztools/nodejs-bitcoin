@@ -21,7 +21,7 @@ setInterval(async () => {
     const carteiraUSD = parseFloat(coins.find(c => c.asset.endsWith('USD')).free);
     if (sellPrice < 1000) {
         console.log('Preço está bom. Verificando se tenho grana...');
-        if (sell <= carteiraUSD) {
+        if (sellPrice <= carteiraUSD) {
 
             console.log('Tenho! Comprando!');
             const buyOrder = await api.newOrder(symbol, 1);
