@@ -16,6 +16,11 @@ let quantity = 0;
 let buyPrice = 0;
 let isBought = false;
 
+ws.on('error', (err) => {
+    console.log('WS Error');
+    console.error(err);
+})
+
 ws.onmessage = async (event) => {
 
     try {
