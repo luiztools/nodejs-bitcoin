@@ -12,25 +12,30 @@ let buyPrice = 0;
 ws.onmessage = async (event) => {
     process.stdout.write('\033c');
 
-    const obj = JSON.parse(event.data);
-    console.log(`Symbol: ${obj.s}`);
-    console.log(`Best ask: ${obj.a}`);
-    console.log(`Best bid: ${obj.b}`);
-    console.log(`Buy Price: ${buyPrice}`);
-    console.log(`Target Price: ${buyPrice * profit}`);
+    try {
+        const obj = JSON.parse(event.data);
+        console.log(`Symbol: ${obj.s}`);
+        console.log(`Best ask: ${obj.a}`);
+        console.log(`Best bid: ${obj.b}`);
+        console.log(`Buy Price: ${buyPrice}`);
+        console.log(`Target Price: ${buyPrice * profit}`);
 
-    if (obj.s === SYMBOL) {
-        if (!buyPrice) {
-            isBought = true;
-            const order = await api.newOrder(SYMBOL, 0.001, 0, 'BUY', 'MARKET');
-            quantity = parseFloat(order.executedQty);
-            buyPrice = parseFloat(order.fills[0].price);
-            return;
+        if (obj.s === SYMBOL) {
+            if (!buyPrice) {
+                isBought = true;
+                const order = await api.newOrder(SYMBOL, 0.001, 0, 'BUY', 'MARKET');
+                quantity = parseFloat(order.executedQty);
+                buyPrice = parseFloat(order.fills[0].price);
+                return;
+            }
+            else if (parseFloat(obj.b) > (buyPrice * profit)) {
+                const order = await api.newOrder(SYMBOL, quantity, 0, 'SELL', 'MARKET');
+                console.log(`Sold at ${new Date()} by ${order.fills[0].price}`);
+                process.exit(1);
+            }
         }
-        else if (parseFloat(obj.b) > (buyPrice * profit)) {
-            const order = await api.newOrder(SYMBOL, quantity, 0, 'SELL', 'MARKET');
-            console.log(`Sold at ${new Date()} by ${order.fills[0].price}`);
-            process.exit(1);
-        }
+    } catch (err) {
+        console.error(err);
+        process.exit(1);
     }
 }
