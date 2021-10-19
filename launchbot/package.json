@@ -1,0 +1,17 @@
+{
+  "name": "launchbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "dotenv-safe": "^8.2.0",
+    "ws": "^8.2.3"
+  }
+}
