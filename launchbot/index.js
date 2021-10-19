@@ -38,7 +38,10 @@ ws.onmessage = async (event) => {
             }
             else if (quantity > 0 && parseFloat(obj.b) > (buyPrice * profit)) {
                 const order = await api.newOrder(SYMBOL, quantity, 0, 'SELL', 'MARKET');
-                console.log(`Sold at ${new Date()} by ${order.fills[0].price}`);
+                if (order.status !== 'FILLED')
+                    console.log(order);
+                else
+                    console.log(`Sold at ${new Date()} by ${order.fills[0].price}`);
                 process.exit(1);
             }
         }
