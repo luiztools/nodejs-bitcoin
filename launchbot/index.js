@@ -32,6 +32,11 @@ ws.onmessage = async (event) => {
             if (!isBought) {
                 isBought = true;
                 const order = await api.newOrder(SYMBOL, buyQty, 0, 'BUY', 'MARKET');
+                if (order.status !== 'FILLED') {
+                    console.log(order);
+                    process.exit(1);
+                }
+
                 quantity = parseFloat(order.executedQty);
                 buyPrice = parseFloat(order.fills[0].price);
                 return;
