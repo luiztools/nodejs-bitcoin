@@ -7,7 +7,7 @@ const ws = new WebSocket("wss://stream.binance.com:9443/ws/!bookTicker");
 //escolha o symbol que vai monitorar - set the symbol to monitor
 const SYMBOL = 'BTCUSDT';
 //escolha o percentual de lucratividade - set the profit percent
-const profit = 1.1;
+const profit = 1.01;
 //escolha quanto quer comprar - set the quantity to buy
 const buyQty = 0.001;
 
@@ -17,17 +17,18 @@ let buyPrice = 0;
 let isBought = false;
 
 ws.onmessage = async (event) => {
-    process.stdout.write('\033c');
 
     try {
         const obj = JSON.parse(event.data);
-        console.log(`Symbol: ${obj.s}`);
-        console.log(`Best ask: ${obj.a}`);
-        console.log(`Best bid: ${obj.b}`);
-        console.log(`Buy Price: ${buyPrice}`);
-        console.log(`Target Price: ${buyPrice * profit}`);
 
         if (obj.s === SYMBOL) {
+            process.stdout.write('\033c');
+            console.log(`Symbol: ${obj.s}`);
+            console.log(`Best ask: ${obj.a}`);
+            console.log(`Best bid: ${obj.b}`);
+            console.log(`Buy Price: ${buyPrice}`);
+            console.log(`Target Price: ${buyPrice * profit}`);
+
             if (!isBought) {
                 isBought = true;
                 const order = await api.newOrder(SYMBOL, buyQty, 0, 'BUY', 'MARKET');
