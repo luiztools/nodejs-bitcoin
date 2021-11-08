@@ -32,11 +32,13 @@ ws.onmessage = async (event) => {
             console.log(`Best ask: ${obj.a}`);
             console.log(`Best bid: ${obj.b}`);
             console.log(`Buy Price: ${buyPrice}`);
+            console.log(`Qty: ${quantity}`);
+            console.log(`Notional: ${buyPrice * quantity}`);
             console.log(`Target Price: ${buyPrice * profit}`);
 
             if (!isBought) {
                 isBought = true;
-                const order = await api.newOrder(SYMBOL, buyQty, 0, 'BUY', 'MARKET');
+                const order = await api.newQuoteOrder(SYMBOL, 10);
                 if (order.status !== 'FILLED') {
                     console.log(order);
                     process.exit(1);

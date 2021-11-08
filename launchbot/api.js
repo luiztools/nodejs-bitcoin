@@ -6,6 +6,11 @@ const apiKey = process.env.API_KEY;
 const apiSecret = process.env.SECRET_KEY;
 const apiUrl = process.env.API_URL;
 
+async function newQuoteOrder(symbol, quoteOrderQty) {
+    const data = { symbol, side: 'BUY', type: 'MARKET', quoteOrderQty };
+    return privateCall('/v3/order', data, 'POST');
+}
+
 async function newOrder(symbol, quantity, price, side = 'BUY', type = 'MARKET') {
     const data = { symbol, side, type, quantity };
 
@@ -42,4 +47,4 @@ async function privateCall(path, data = {}, method = 'GET') {
     }
 }
 
-module.exports = { newOrder }
+module.exports = { newOrder, newQuoteOrder }
