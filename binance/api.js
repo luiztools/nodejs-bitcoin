@@ -76,4 +76,22 @@ async function exchangeInfo(symbol) {
     return symbol ? result.symbols.find(s => s.symbol === symbol) : result.symbols;
 }
 
-module.exports = { ping, time, depth, exchangeInfo, accountInfo, newOrder }
+async function trades(symbol, fromId = 0, limit = 1000) {
+    const path = '/v3/historicalTrades';
+
+    if (!apiKey)
+        throw new Error('Preencha corretamente sua API KEY');
+
+    try {
+        const result = await axios({
+            method: 'GET',
+            url: `${apiUrl}${path}?symbol=${symbol}&fromId=${fromId}&limit=${limit}`,
+            headers: { 'X-MBX-APIKEY': apiKey }
+        });
+        return result.data;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports = { ping, time, depth, exchangeInfo, accountInfo, newOrder, trades }
