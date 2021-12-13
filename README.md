@@ -26,7 +26,7 @@ Para ler o tutorial da Mercado Bitcoin, acesse: https://www.luiztools.com.br/pos
 
 Para ler o tutorial da Binance, acesse: https://www.luiztools.com.br/post/como-criar-robo-trader-da-binance-em-nodejs/
 
-Assista à live do LaunchBot: https://youtu.be/Ri8ZrUBIyWE
+Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 
