@@ -1,5 +1,5 @@
 # nodejs-bitcoin
-Two simple trader bots (Mercado Bitcoin e Binance).
+Simple trader bots (Mercado Bitcoin e Binance) and another crypto examples.
 
 ## AVISOS
 
@@ -10,6 +10,7 @@ Two simple trader bots (Mercado Bitcoin e Binance).
 - NÃO COMPARTILHE SUAS VARIÁVEIS DE AMBIENTE E ARQUIVO .ENV COM NINGUÉM, NEM COMIGO.
 - AO USAR ESTE ROBÔ, VOCÊ ASSUME QUALQUER RISCO FINANCEIRO QUE ELE POSSA LHE CAUSAR.
 - NÃO TENHO ROBÔS DE OUTROS BROKERS, SÓ TENHO ESSES.
+- NÃO DESENVOLVO PARA TERCEIROS
 
 ## Instruções
 
@@ -24,9 +25,11 @@ Two simple trader bots (Mercado Bitcoin e Binance).
 
 Para ler o tutorial da Mercado Bitcoin, acesse: https://www.luiztools.com.br/post/como-criar-um-bot-de-compra-e-venda-de-bitcoin-usando-node-js/
 
-Para ler o tutorial da Binance, acesse: https://www.luiztools.com.br/post/como-criar-robo-trader-da-binance-em-nodejs/
+Para ler o tutorial do bot para Binance (incluindo vídeos), acesse: https://www.luiztools.com.br/post/como-criar-robo-trader-da-binance-em-nodejs/
 
 Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
+
+Leia o tutorial do CryptoBubbles (inclui vídeo): https://www.luiztools.com.br/post/criando-um-cryptobubbles-clone-com-javascript/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 
