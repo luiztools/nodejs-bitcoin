@@ -16,7 +16,7 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto examples.
 
 1. Execute npm install na pasta do projeto que vai executar para baixar dependências
 2. Obtenha suas credenciais de API na sua área logada da sua exchange
-3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example
+3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example (quando houver)
 4. Preencha os valores das variáveis no .env conforme instruído nos comentários do .env.example
 5. No caso da Mercado Bitcoin, ajuste a linha 32 do index.js para sua lógica de 'comprar barato'
 5. Execute o robô com npm start, leva alguns segundos para começar (CRAWLER_INTERVAL)
@@ -30,6 +30,8 @@ Para ler o tutorial do bot para Binance (incluindo vídeos), acesse: https://www
 Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
 
 Leia o tutorial do CryptoBubbles (inclui vídeo): https://www.luiztools.com.br/post/criando-um-cryptobubbles-clone-com-javascript/
+
+Leia o tutorial da MetaMask (inclui vídeo): https://www.luiztools.com.br/post/integracao-com-metamask-via-js/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 
