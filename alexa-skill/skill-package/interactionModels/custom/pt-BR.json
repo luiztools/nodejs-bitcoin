@@ -1,0 +1,40 @@
+{
+  "interactionModel": {
+      "languageModel": {
+          "invocationName": "abrir teste cripto",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": []
+              },
+              {
+                  "name": "GetCryptoIntent",
+                  "slots": [
+                      {
+                          "name": "crypto",
+                          "type": "AMAZON.SearchQuery"
+                      }
+                  ],
+                  "samples": [
+                      "cotação do {crypto}",
+                      "valor do {crypto}",
+                      "preço do {crypto}"
+                  ]
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": []
+              }
+          ],
+          "types": []
+      }
+  }
+}

@@ -1,5 +1,5 @@
 # nodejs-bitcoin
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto examples.
+Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
 
 ## AVISOS
 
@@ -32,6 +32,8 @@ Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
 Leia o tutorial do CryptoBubbles (inclui vídeo): https://www.luiztools.com.br/post/criando-um-cryptobubbles-clone-com-javascript/
 
 Leia o tutorial da MetaMask (inclui vídeo): https://www.luiztools.com.br/post/integracao-com-metamask-via-js/
+
+Leia o tutorial da Alexa Skill (inclui vídeo): https://www.luiztools.com.br/post/tutorial-de-skill-para-amazon-alexa-em-node-js/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 
