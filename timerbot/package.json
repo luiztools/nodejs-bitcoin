@@ -1,0 +1,17 @@
+{
+  "name": "timerbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv-safe": "^8.2.0",
+    "node-schedule": "^2.1.0"
+  }
+}

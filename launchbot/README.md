@@ -1,4 +1,4 @@
-# nodejs-bitcoin
+# launchbot
 Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
 
 ## AVISOS
@@ -23,7 +23,7 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project exampl
 
 ## Mais informações
 
-Leia o tutorial da MetaMask (inclui vídeo): https://www.luiztools.com.br/post/integracao-com-metamask-via-js/
+Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 

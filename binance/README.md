@@ -23,7 +23,7 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project exampl
 
 ## Mais informações
 
-Leia o tutorial da MetaMask (inclui vídeo): https://www.luiztools.com.br/post/integracao-com-metamask-via-js/
+Para ler o tutorial do bot para Binance (incluindo vídeos), acesse: https://www.luiztools.com.br/post/como-criar-robo-trader-da-binance-em-nodejs/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 

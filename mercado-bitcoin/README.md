@@ -1,4 +1,4 @@
-# nodejs-bitcoin
+# mercado-bitcoin
 Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
 
 ## AVISOS
@@ -23,7 +23,7 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project exampl
 
 ## Mais informações
 
-Leia o tutorial da MetaMask (inclui vídeo): https://www.luiztools.com.br/post/integracao-com-metamask-via-js/
+Para ler o tutorial da Mercado Bitcoin, acesse: https://www.luiztools.com.br/post/como-criar-um-bot-de-compra-e-venda-de-bitcoin-usando-node-js/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 
