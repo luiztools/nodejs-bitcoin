@@ -41,7 +41,6 @@ async function privateCall(path, data = {}, method = 'GET') {
             url: `${apiUrl}${path}${qs}`,
             headers: { 'X-MBX-APIKEY': apiKey }
         });
-        console.log('sent at ' + timestamp);
         return result.data;
     } catch (err) {
         console.log(err);

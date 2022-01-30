@@ -5,11 +5,14 @@ const nodeSchedule = require('node-schedule');
 
 let order;
 
-const dt = new Date(2022, 1, 17, 21);
+const dt = new Date(2022, 1, 20, 8, 59, 59, 82);
 const job = nodeSchedule.scheduleJob(dt, () => {
-    order = await api.newQuoteOrder('LOKAUSDT', 10);
-    if (order.status !== 'FILLED')
-        console.log(order);
-})
+    order = await api.newQuoteOrder('LOKABNB', 0.1);
+    let order2;
+    if (order.status === 'FILLED') {
+        order2 = await api.newOrder('LOKABNB', order.executedQty, 0, 'SELL', 'LIMIT');
+    }
 
-console.log(job.nextInvocation());
+    console.log(order);
+    console.log(order2);
+})
