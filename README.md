@@ -1,5 +1,5 @@
 # nodejs-bitcoin
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+Simple trader bots (Binance, Mercado Bitcoin & Biscoint) and another crypto-project examples.
 
 ## AVISOS
 
