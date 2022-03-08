@@ -1,5 +1,5 @@
 # mercado-bitcoin
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+Simple trader bot.
 
 ## AVISOS
 

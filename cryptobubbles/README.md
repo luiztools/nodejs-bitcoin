@@ -1,5 +1,5 @@
 # cryptobubbles
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+A Cryptobubbles-clone website to monitor crypto market.
 
 ## Instruções
 

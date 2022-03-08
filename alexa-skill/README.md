@@ -1,5 +1,5 @@
 # alexa-skill
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+A simple Alexa skill (Amazon Echo assistant) to obtain crypto market info.
 
 ## Instruções
 

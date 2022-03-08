@@ -1,5 +1,5 @@
 # nodejs-bitcoin
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+Simple trader bot for Binance.
 
 ## AVISOS
 
@@ -18,7 +18,6 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project exampl
 2. Obtenha suas credenciais de API na sua área logada da sua exchange
 3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example (quando houver)
 4. Preencha os valores das variáveis no .env conforme instruído nos comentários do .env.example
-5. No caso da Mercado Bitcoin, ajuste a linha 32 do index.js para sua lógica de 'comprar barato'
 5. Execute o robô com npm start, leva alguns segundos para começar (CRAWLER_INTERVAL)
 
 ## Mais informações

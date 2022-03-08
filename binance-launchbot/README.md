@@ -1,5 +1,5 @@
-# timerbot
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+# launchbot
+Simple launch bot for Binance Launchpad tokens.
 
 ## AVISOS
 
@@ -18,14 +18,11 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project exampl
 2. Obtenha suas credenciais de API na sua área logada da sua exchange
 3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example (quando houver)
 4. Preencha os valores das variáveis no .env conforme instruído nos comentários do .env.example
-5. No caso da Mercado Bitcoin, ajuste a linha 32 do index.js para sua lógica de 'comprar barato'
 5. Execute o robô com npm start, leva alguns segundos para começar (CRAWLER_INTERVAL)
 
 ## Mais informações
 
-Para ver a videoaula deste repositório, acesse: https://youtu.be/TFBgrrqRnOI
-
-Para ler o tutorial de Node Schedule acesse: https://www.luiztools.com.br/post/como-executar-tarefas-agendadas-com-node-schedule/
+Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 

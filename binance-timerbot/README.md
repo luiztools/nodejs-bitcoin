@@ -1,5 +1,5 @@
-# launchbot
-Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project examples.
+# timerbot
+Simple trader bot for Binance.
 
 ## AVISOS
 
@@ -23,7 +23,9 @@ Simple trader bots (Mercado Bitcoin e Binance) and another crypto-project exampl
 
 ## Mais informações
 
-Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
+Para ver a videoaula deste repositório, acesse: https://youtu.be/TFBgrrqRnOI
+
+Para ler o tutorial de Node Schedule acesse: https://www.luiztools.com.br/post/como-executar-tarefas-agendadas-com-node-schedule/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 
