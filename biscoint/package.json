@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node -r dotenv/config index"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.26.0"
+    "axios": "^0.26.0",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.0"
   }
 }
