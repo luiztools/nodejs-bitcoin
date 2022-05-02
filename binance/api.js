@@ -76,6 +76,10 @@ async function exchangeInfo(symbol) {
     return symbol ? result.symbols.find(s => s.symbol === symbol) : result.symbols;
 }
 
+async function myTrades() {
+    return privateCall('/v3/allOrders', {}, 'GET');
+}
+
 async function trades(symbol, fromId = 0, limit = 1000) {
     const path = '/v3/historicalTrades';
 
@@ -94,4 +98,4 @@ async function trades(symbol, fromId = 0, limit = 1000) {
     }
 }
 
-module.exports = { ping, time, depth, exchangeInfo, accountInfo, newOrder, trades }
+module.exports = { ping, time, depth, exchangeInfo, accountInfo, newOrder, trades, myTrades }
