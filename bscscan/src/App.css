@@ -16,18 +16,27 @@
 .bg-dark{
   background-image: url('https://bscscan.com/images/svg/components/abstract-shapes-20.svg?v=2');
   background-color: #12161c!important;
-  height: 150px;
+  height: 200px;
 }
 
-.container {
-  padding-top: 45px;
-  padding-right: 45px;
+.search {
+  padding: 45px;
   max-width: '100%';
   padding-bottom: '4.5rem!important';
 }
 
-.h4 {
+.title {
   color:#FBDA3C;
   margin-bottom: .75rem!important;
   font-size: 1.3125rem;
+}
+
+.submit {
+  width: 50px;
+  background-color: '#3498db';
+}
+
+.result {
+  margin: 45px;
+  padding: 0;
 }

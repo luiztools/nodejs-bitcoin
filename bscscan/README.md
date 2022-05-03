@@ -9,7 +9,7 @@ A prototype of BSC Scan clone website using the BSC Scan official APIs.
 4. Create a .env file as .env.example with your vars
 5. npm start
 
-Tutorial completo em https://www.luiztools.com.br
+Tutorial completo em https://www.luiztools.com.br/post/como-criar-um-bsc-scan-clone-com-reactjs/
 
 Me siga nas redes sociais: https://about.me/luiztools
 
