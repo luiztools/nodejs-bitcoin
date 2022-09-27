@@ -1,5 +1,5 @@
 # nodejs-bitcoin
-Simple trader bots (Binance, Mercado Bitcoin, Biscoint & PancakeSwap) and another crypto-project examples.
+Simple trader bots for Binance Spot, Binance Futures, Binance Launchpad, Mercado Bitcoin, Biscoint and PancakeSwap.
 
 ## AVISOS
 
