@@ -9,7 +9,6 @@ Simple trader bot for Binance Futures.
 - CRIPTOMOEDAS É INVESTIMENTO DE RISCO, TENHA ISSO EM MENTE.
 - NÃO COMPARTILHE SUAS VARIÁVEIS DE AMBIENTE E ARQUIVO .ENV COM NINGUÉM, NEM COMIGO.
 - AO USAR ESTE ROBÔ, VOCÊ ASSUME QUALQUER RISCO FINANCEIRO QUE ELE POSSA LHE CAUSAR.
-- NÃO TENHO ROBÔS DE OUTROS BROKERS, SÓ TENHO ESSES.
 - NÃO DESENVOLVO PARA TERCEIROS
 
 ## Instruções
@@ -22,7 +21,9 @@ Simple trader bot for Binance Futures.
 
 ## Mais informações
 
-Tutorial em breve no blog https://www.luiztools.com.br
+Crie suas chaves de API para Futuros com este vídeo: https://www.youtube.com/watch?v=FCzgqr2P0_g
+
+Tutorial em breve no blog, assine a newsletter https://www.luiztools.com.br
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 

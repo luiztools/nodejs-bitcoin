@@ -14,7 +14,7 @@ const BUSD = "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee";//testnet
 
 
 setInterval(async () => {
-    const price = await getPrice(CAKE);
+    const price = await api.getPrice(CAKE);
     console.log(price);
     if (price < PRICE_TO_BUY) {
         console.log("Cheap. Time to buy.");
