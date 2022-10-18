@@ -11,6 +11,6 @@ A simple swap bot for PancakeSwap. No guarantees.
 - AO USAR ESTE ROBÔ, VOCÊ ASSUME QUALQUER RISCO FINANCEIRO QUE ELE POSSA LHE CAUSAR.
 - NÃO DESENVOLVO PARA TERCEIROS
 
-Em breve tutorial no blog e talvez no canal também.
+Tutorial no blog: https://www.luiztools.com.br/post/como-criar-bot-trader-para-pancakeswap-em-node-js/
 
 Me siga nas redes sociais para novidades: https://about.me/luiztools
