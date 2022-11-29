@@ -1,6 +1,14 @@
 # binance-spot
 Simple trader bot for Binance Spot.
 
+## How to Run
+
+1. git clone
+2. npm install
+3. copy .env.example as .env
+4. fill the .env
+5. npm start
+
 ## AVISOS
 
 - VOCÊ DEVE TER CONHECIMENTOS BÁSICOS DE LÓGICA DE PROGRAMAÇÃO E DE ALGORITMOS PARA USAR ESTE ROBÔ.
@@ -9,20 +17,11 @@ Simple trader bot for Binance Spot.
 - CRIPTOMOEDAS É INVESTIMENTO DE RISCO, TENHA ISSO EM MENTE.
 - NÃO COMPARTILHE SUAS VARIÁVEIS DE AMBIENTE E ARQUIVO .ENV COM NINGUÉM, NEM COMIGO.
 - AO USAR ESTE ROBÔ, VOCÊ ASSUME QUALQUER RISCO FINANCEIRO QUE ELE POSSA LHE CAUSAR.
-- NÃO TENHO ROBÔS DE OUTROS BROKERS, SÓ TENHO ESSES.
 - NÃO DESENVOLVO PARA TERCEIROS
-
-## Instruções
-
-1. Execute npm install na pasta do projeto que vai executar para baixar dependências
-2. Obtenha suas credenciais de API na sua área logada da sua exchange
-3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example
-4. Preencha os valores das variáveis no .env conforme instruído nos comentários do .env.example
-5. Execute o robô com npm start, leva alguns segundos para começar (CRAWLER_INTERVAL)
 
 ## Mais informações
 
-Para ler o tutorial do bot para Binance (incluindo vídeos), acesse: https://www.luiztools.com.br/post/como-criar-robo-trader-da-binance-em-nodejs/
+Para ler o tutorial do bot para Binance (incluindo vídeo), acesse: https://www.luiztools.com.br/post/como-criar-robo-trader-da-binance-em-nodejs/
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 

@@ -1,17 +1,19 @@
 {
-  "name": "binance-spot",
+  "name": "liqi",
   "version": "1.0.0",
-  "description": "Simple trader bot for Binance Spot.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config index"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.2.0",
+    "axios": "^1.1.3",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
-    "ws": "^8.11.0"
+    "elliptic": "^6.5.4",
+    "urlencode": "^1.1.0"
   }
 }
