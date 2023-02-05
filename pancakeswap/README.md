@@ -11,6 +11,21 @@ A simple swap bot for PancakeSwap. No guarantees.
 - AO USAR ESTE ROBÔ, VOCÊ ASSUME QUALQUER RISCO FINANCEIRO QUE ELE POSSA LHE CAUSAR.
 - NÃO DESENVOLVO PARA TERCEIROS
 
+## How to Run
+
+1. cd pancakeswap
+2. npm install
+3. copy .env.example as .env
+4. fill .env variables
+5. check the index.js and customize
+6. npm start to run
+
+## Mais
+
 Tutorial no blog: https://www.luiztools.com.br/post/como-criar-bot-trader-para-pancakeswap-em-node-js/
 
 Me siga nas redes sociais para novidades: https://about.me/luiztools
+
+Receba novidades no Telegram: https://t.me/luiznews
+
+Conheça meu curso de web3/blockchain: https://www.luiztools.com.br/curso-web23

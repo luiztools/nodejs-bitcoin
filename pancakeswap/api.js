@@ -14,12 +14,11 @@ const ROUTER_CONTRACT = "0xD99D1c33F9fC3444f8101754aBC46c52416550D1";
 //pancake mainet
 //const ROUTER_CONTRACT="0x10ED43C718714eb63d5aA57B78B54704E256024E";
 
+const USDT_MAINNET = "0x55d398326f99059fF775485246999027B3197955";
+
 async function getPrice(contract) {
-    //another form to get price
-    //https://bsc.api.0x.org/swap/v1/quote?buyToken=BUSD&sellToken=0xacFC95585D80Ab62f67A14C566C1b7a49Fe91167&sellAmount=1000000000000000000&excludedSources=BakerySwap,Belt,DODO,DODO_V2,Ellipsis,Mooniswap,MultiHop,Nerve,SushiSwap,Smoothy,ApeSwap,CafeSwap,CheeseSwap,JulSwap,LiquidityProvider&slippagePercentage=0&gasPrice=0
-    //{"updated_at":1651872520555,"data":{"name":"Tether USD","symbol":"USDT","price":"0.99972238262078029276683259597","price_BNB":"0.002625642537367571341001321609518"}}
-    const { data } = await axios.get(`https://api.pancakeswap.info/api/v2/tokens/${contract}`);
-    return parseFloat(data.data.price);//preço em dólar
+    const { data } = await axios.get(`https://bsc.api.0x.org/swap/v1/price/?sellToken=${contract}&sellAmount=1000000000000000000&buyToken=${USDT_MAINNET}`);
+    return parseFloat(data.price);
 }
 
 async function getBalance(walletAddress, contractAddress, decimals = 18) {
