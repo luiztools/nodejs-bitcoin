@@ -1,5 +1,5 @@
 const { ethers } = require('ethers');
-const axios = require('axios');
+const axios = require('axios').default;
 
 //WBNB Testnet
 const WBNB_CONTRACT = "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd";
@@ -25,7 +25,7 @@ async function getBalance(walletAddress, contractAddress, decimals = 18) {
     const provider = await getProvider();
     const contract = new ethers.Contract(contractAddress, ["function balanceOf(address) view returns (uint)"], provider);
     const balance = await contract.balanceOf(walletAddress)
-    return ethers.utils.formatUnits(balance, decimals);
+    return ethers.formatUnits(balance, decimals);
 }
 
 async function getTransaction(hash) {
@@ -36,7 +36,7 @@ async function getTransaction(hash) {
 let provider;
 async function getProvider() {
     if (!provider)
-        provider = new ethers.providers.JsonRpcProvider(process.env.PROVIDER_URL);
+        provider = new ethers.JsonRpcProvider(process.env.PROVIDER_URL);
 
     return provider;
 }
@@ -45,7 +45,7 @@ let walletInstance;
 async function getWallet() {
     if (!walletInstance) {
         const provider = await getProvider();
-        const wallet = ethers.Wallet.fromMnemonic(process.env.MNEMONIC);
+        const wallet = ethers.Wallet.fromPhrase(process.env.MNEMONIC);
         walletInstance = wallet.connect(provider);
     }
 
@@ -60,9 +60,9 @@ async function swapFromBNB(walletAddress, tokenContract, bnbToSpend) {
         ["function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)"],
         account);
 
-    const value = ethers.utils.parseEther(bnbToSpend).toHexString();
+    const value = ethers.parseEther(bnbToSpend).toString();
 
-    const gasPrice = ethers.utils.parseUnits('10', 'gwei');
+    const gasPrice = ethers.parseUnits('10', 'gwei');
 
     return contract.swapExactETHForTokens(0, [
         WBNB_CONTRACT,
@@ -85,11 +85,11 @@ async function swapTokens(wallet, tokenFrom, quantity, tokenTo) {
         ["function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)"],
         account);
 
-    const value = ethers.utils.parseEther(quantity).toHexString();
+    const value = ethers.parseEther(quantity).toString();
 
     await approve(tokenFrom, value);
 
-    const gasPrice = ethers.utils.parseUnits('10', 'gwei');
+    const gasPrice = ethers.parseUnits('10', 'gwei');
 
     return contract.swapExactTokensForTokens(value, 0, [
         tokenFrom,
@@ -111,11 +111,11 @@ async function swapToBNB(walletAddress, tokenContract, amountIn) {
         ["function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)"],
         account);
 
-    const value = ethers.utils.parseEther(amountIn).toHexString();
+    const value = ethers.parseEther(amountIn).toString();
 
     await approve(tokenContract, value);
 
-    const gasPrice = ethers.utils.parseUnits('10', 'gwei');
+    const gasPrice = ethers.parseUnits('10', 'gwei');
 
     return contract.swapExactTokensForETH(value, 0, [
         tokenContract,
