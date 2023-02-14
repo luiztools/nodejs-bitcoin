@@ -1,11 +1,11 @@
 const WebSocket = require('ws');
-const ws = new WebSocket("wss://stream.binance.com:9443/ws/!bookTicker");
+const ws = new WebSocket("wss://stream.binance.com:9443/ws/!miniTicker@arr");
 
 const BOOK = {};
 
 ws.onmessage = async (event) => {
-    const obj = JSON.parse(event.data);
-    BOOK[obj.s] = { ask: parseFloat(obj.a), bid: parseFloat(obj.b) }
+    const arr = JSON.parse(event.data);
+    arr.map(obj => BOOK[obj.s] = { price: parseFloat(obj.c) });
 }
 
 function getBook(symbol){

@@ -4,9 +4,10 @@ A simple triangular arbitrage monitor using Binance exchange APIs & streams.
 
 ## How to run
 1. Enter in binance-arbitrage folder
-2. Adjust .env as you like
-3. npm install
-4. npm start
+2. Copy .env.example as .env
+3. fill .env variables
+4. npm install
+5. npm start
 
 Leia o tutorial ou assista aos vídeos em meu blog: https://www.luiztools.com.br/post/algoritmo-para-arbitragem-triangular-com-bot/
 

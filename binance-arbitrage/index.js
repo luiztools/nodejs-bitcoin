@@ -51,16 +51,16 @@ function processBuyBuySell(buyBuySell) {
         //verifica se já temos todos os preços
         let priceBuy1 = stream.getBook(candidate.buy1.symbol);
         if (!priceBuy1) continue;
-        priceBuy1 = parseFloat(priceBuy1.ask);
+        priceBuy1 = parseFloat(priceBuy1.price);
 
         let priceBuy2 = stream.getBook(candidate.buy2.symbol);
         if (!priceBuy2) continue;
-        priceBuy2 = parseFloat(priceBuy2.ask);
+        priceBuy2 = parseFloat(priceBuy2.price);
 
         let priceSell1 = stream.getBook(candidate.sell1.symbol);
         if (!priceSell1) continue;
 
-        priceSell1 = parseFloat(priceSell1.bid);
+        priceSell1 = parseFloat(priceSell1.price);
 
         //se tem o preço dos 3, pode analisar a lucratividade
         const crossRate = (1 / priceBuy1) * (1 / priceBuy2) * priceSell1;
@@ -78,15 +78,15 @@ function processBuySellSell(buySellSell) {
         //verifica se já temos todos os preços
         let priceBuy1 = stream.getBook(candidate.buy1.symbol);
         if (!priceBuy1) continue;
-        priceBuy1 = parseFloat(priceBuy1.ask);
+        priceBuy1 = parseFloat(priceBuy1.price);
 
         let priceSell1 = stream.getBook(candidate.sell1.symbol);
         if (!priceSell1) continue;
-        priceSell1 = parseFloat(priceSell1.bid);
+        priceSell1 = parseFloat(priceSell1.price);
 
         let priceSell2 = stream.getBook(candidate.sell2.symbol);
         if (!priceSell2) continue;
-        priceSell2 = parseFloat(priceSell2.bid);
+        priceSell2 = parseFloat(priceSell2.price);
 
         //se tem o preço dos 3, pode analisar a lucratividade
         const crossRate = (1 / priceBuy1) * priceSell1 * priceSell2;
@@ -127,7 +127,7 @@ async function start() {
         console.log(new Date());
         processBuyBuySell(buyBuySell);
         processBuySellSell(buySellSell);
-    }, INTERVAL)
+    }, INTERVAL || 3000)
 
 }
 
