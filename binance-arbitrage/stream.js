@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
-const ws = new WebSocket("wss://stream.binance.com:9443/ws/!miniTicker@arr");
+
+const ws = new WebSocket(`${process.env.STREAM_URL}/!miniTicker@arr`);
 
 const BOOK = {};
 

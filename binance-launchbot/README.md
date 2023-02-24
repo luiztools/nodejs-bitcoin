@@ -1,5 +1,5 @@
 # launchbot
-Simple launch bot for Binance Launchpad tokens.
+Simple launch bot for Binance Launchpad and other new coinpairs.
 
 ## AVISOS
 
@@ -15,14 +15,14 @@ Simple launch bot for Binance Launchpad tokens.
 ## Instruções
 
 1. Execute npm install na pasta do projeto que vai executar para baixar dependências
-2. Obtenha suas credenciais de API na sua área logada da sua exchange
-3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example (quando houver)
+2. Obtenha suas credenciais de API na sua área logada da sua exchange (https://www.youtube.com/watch?v=-6bF6a6ecIs)
+3. Crie um arquivo .env na raiz do projeto com o mesmo conteúdo do arquivo .env.example
 4. Preencha os valores das variáveis no .env conforme instruído nos comentários do .env.example
-5. Execute o robô com npm start, leva alguns segundos para começar (CRAWLER_INTERVAL)
+5. Execute o robô com npm start
 
 ## Mais informações
 
-Assista ao tutorial do LaunchBot: https://www.youtube.com/watch?v=y7QNhsfURyA
+Assista ao tutorial do LaunchBot: https://youtube.com/live/tu9jZQLNvx8?feature=share
 
 Conheça meu curso de bot para criptomoedas: https://www.luiztools.com.br/curso-beholder
 

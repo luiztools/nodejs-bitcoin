@@ -1,61 +1,57 @@
-require('dotenv-safe').config();
+require('dotenv').config();
 const api = require('./api');
 
-const WebSocket = require('ws');
-const ws = new WebSocket("wss://stream.binance.com:9443/ws/!bookTicker");
+const SYMBOL = process.env.SYMBOL;
+const PROFIT = parseFloat(process.env.PROFIT);
+const BUY_QTY = parseFloat(process.env.BUY_QTY);
 
-//escolha o symbol que vai monitorar - set the symbol to monitor
-const SYMBOL = 'BTCUSDT';
-//escolha o percentual de lucratividade - set the profit percent
-const profit = 1.01;
-//escolha quanto quer comprar - set the quantity to buy
-const buyQty = 0.001;
+const WebSocket = require('ws');
+const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${SYMBOL.toLowerCase()}@bookTicker`);
 
 //não mexa nestas variáveis
 let quantity = 0;
 let buyPrice = 0;
-let isBought = false;
 
 ws.on('error', (err) => {
     console.log('WS Error');
     console.error(err);
+    process.exit(1);
 })
 
 ws.onmessage = async (event) => {
 
     try {
         const obj = JSON.parse(event.data);
+        console.clear();
 
-        if (obj.s === SYMBOL) {
-            process.stdout.write('\033c');
-            console.log(`Symbol: ${obj.s}`);
-            console.log(`Best ask: ${obj.a}`);
-            console.log(`Best bid: ${obj.b}`);
-            console.log(`Buy Price: ${buyPrice}`);
-            console.log(`Qty: ${quantity}`);
-            console.log(`Notional: ${buyPrice * quantity}`);
-            console.log(`Target Price: ${buyPrice * profit}`);
+        console.log(`Symbol: ${obj.s}`);
+        console.log(`Best ask: ${obj.a}`);
+        console.log(`Best bid: ${obj.b}`);
+        console.log(`Buy Price: ${buyPrice}`);
+        console.log(`Qty: ${quantity}`);
+        console.log(`Notional: ${buyPrice * quantity}`);
+        console.log(`Target Price: ${buyPrice * PROFIT}`);
 
-            if (!isBought) {
-                isBought = true;
-                const order = await api.newQuoteOrder(SYMBOL, 10);
-                if (order.status !== 'FILLED') {
-                    console.log(order);
-                    process.exit(1);
-                }
+        if (quantity === 0) {
+            quantity = -1;
 
-                quantity = parseFloat(order.executedQty);
-                buyPrice = parseFloat(order.fills[0].price);
-                return;
-            }
-            else if (quantity > 0 && parseFloat(obj.b) > (buyPrice * profit)) {
-                const order = await api.newOrder(SYMBOL, quantity, 0, 'SELL', 'MARKET');
-                if (order.status !== 'FILLED')
-                    console.log(order);
-                else
-                    console.log(`Sold at ${new Date()} by ${order.fills[0].price}`);
+            const order = await api.buy(SYMBOL, BUY_QTY);
+            if (order.status !== 'FILLED') {
+                console.log(order);
                 process.exit(1);
             }
+
+            quantity = parseFloat(order.executedQty);
+            buyPrice = parseFloat(order.fills[0].price);
+            return;
+        }
+        else if (quantity > 0 && parseFloat(obj.b) > (buyPrice * PROFIT)) {
+            const order = await api.sell(SYMBOL, quantity);
+            if (order.status !== 'FILLED')
+                console.log(order);
+            else
+                console.log(`Sold at ${new Date()} by ${order.fills[0].price}`);
+            process.exit(1);
         }
     } catch (err) {
         console.error(err);

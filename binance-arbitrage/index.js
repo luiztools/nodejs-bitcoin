@@ -1,4 +1,4 @@
-const { exchangeInfo } = require("./api");
+const { exchangeInfo, newOrder } = require("./api");
 const stream = require("./stream");
 
 const QUOTE = process.env.QUOTE;
@@ -44,7 +44,7 @@ function getBuySellSell(buySymbols, allSymbols, symbolsMap) {
     return buySellSell;
 }
 
-function processBuyBuySell(buyBuySell) {
+async function processBuyBuySell(buyBuySell) {
     for (let i = 0; i < buyBuySell.length; i++) {
         const candidate = buyBuySell[i];
 
@@ -67,11 +67,17 @@ function processBuyBuySell(buyBuySell) {
         if (crossRate > PROFITABILITY) {
             console.log(`OP BBS EM ${candidate.buy1.symbol} > ${candidate.buy2.symbol} > ${candidate.sell1.symbol} = ${crossRate}`);
             console.log(`Investindo ${QUOTE}${AMOUNT}, retorna ${QUOTE}${((AMOUNT / priceBuy1) / priceBuy2) * priceSell1}`);
+            console.log("ENVIANDO COMPRA 1");
+            const dataBuy1 = await newOrder(candidate.buy1.symbol, AMOUNT, "BUY");
+            console.log("ENVIANDO COMPRA 2");
+            const dataBuy2 = await newOrder(candidate.buy2.symbol, 0, "BUY", dataBuy1.executedQty);
+            console.log("ENVIANDO VENDA 3");
+            newOrder(candidate.sell1.symbol, dataBuy2.executedQty, "SELL");
         }
     }
 }
 
-function processBuySellSell(buySellSell) {
+async function processBuySellSell(buySellSell) {
     for (let i = 0; i < buySellSell.length; i++) {
         const candidate = buySellSell[i];
 
@@ -93,6 +99,12 @@ function processBuySellSell(buySellSell) {
         if (crossRate > PROFITABILITY) {
             console.log(`OP BSS EM ${candidate.buy1.symbol} > ${candidate.sell1.symbol} > ${candidate.sell2.symbol} = ${crossRate}`);
             console.log(`Investindo ${QUOTE}${AMOUNT}, retorna ${QUOTE}${((AMOUNT / priceBuy1) * priceSell1) * priceSell2}`);
+            console.log("ENVIANDO COMPRA 1");
+            const dataBuy1 = await newOrder(candidate.buy1.symbol, AMOUNT, "BUY");
+            console.log("ENVIANDO VENDA 2");
+            const dataSell1 = await newOrder(candidate.sell1.symbol, dataBuy1.executedQty, "SELL");
+            console.log("ENVIANDO VENDA 3");
+            newOrder(candidate.sell2.symbol, dataSell1.executedQty, "SELL");
         }
     }
 }
