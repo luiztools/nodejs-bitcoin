@@ -12,12 +12,12 @@ ws.onmessage = (event) => {
     console.log(`Ask Price: ${obj.a}`);
 
     const currentPrice = parseFloat(obj.a);
-    if (sellPrice === 0 && currentPrice < 16000) {
-        newOrder("0.01", "BUY");
+    if (sellPrice === 0 && currentPrice < 27000) {
+        newOrder("0.001", "BUY");
         sellPrice = currentPrice * profitability;
     }
     else if (sellPrice !== 0 && currentPrice >= sellPrice) {
-        newOrder("0.01", "SELL");
+        newOrder("0.001", "SELL");
         sellPrice = 0;
     }
     else
