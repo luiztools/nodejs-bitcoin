@@ -1,8 +1,9 @@
 const WebSocket = require("ws");
 require("dotenv").config();
-const api = require("./api");
 
 const accounts = [];
+
+const api = require("./api");
 
 async function loadAccounts() {
     const { listenKey } = await api.connectAccount();
@@ -67,7 +68,7 @@ async function start() {
                 const results = await Promise.allSettled(promises);
                 console.log(results);
 
-                //para não entrar em loop
+                //para não entrar em loop durante os testes, descomente abaixo
                 process.exit(0);
             }
         }
