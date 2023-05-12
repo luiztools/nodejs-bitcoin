@@ -6,13 +6,13 @@ let sellPrice = 0;
 const profitability = parseFloat(process.env.PROFITABILITY);
 
 ws.onmessage = (event) => {
-    console.clear();
+    //console.clear();
     const obj = JSON.parse(event.data);
     console.log(`Symbol: ${obj.s}`);
     console.log(`Ask Price: ${obj.a}`);
 
     const currentPrice = parseFloat(obj.a);
-    if (sellPrice === 0 && currentPrice < 27000) {
+    if (sellPrice === 0 && currentPrice < 29000) {
         newOrder("0.001", "BUY");
         sellPrice = currentPrice * profitability;
     }
