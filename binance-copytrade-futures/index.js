@@ -39,7 +39,7 @@ function copyTrade(trade) {
     if (trade.sp && parseFloat(trade.sp))
         data.stopPrice = trade.sp;
 
-    if (trade.ps && parseFloat(trade.ps))
+    if (trade.ps)
         data.positionSide = trade.ps;
 
     if (trade.AP && parseFloat(trade.AP))
