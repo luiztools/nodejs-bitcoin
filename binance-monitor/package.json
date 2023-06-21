@@ -1,0 +1,16 @@
+{
+  "name": "binance-spot",
+  "version": "1.0.0",
+  "description": "Simple trader bot for Binance Spot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ws": "^8.11.0"
+  }
+}
