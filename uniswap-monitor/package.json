@@ -1,0 +1,17 @@
+{
+  "name": "uniswap-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.22.5",
+    "dotenv": "^16.3.1",
+    "moralis": "^2.22.5"
+  }
+}

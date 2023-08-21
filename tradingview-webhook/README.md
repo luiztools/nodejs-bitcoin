@@ -1,6 +1,8 @@
 # Trading View WebHook
 
+Webhook to receive signals from Trading View.
 
+Tutorial here: https://www.luiztools.com.br/post/como-criar-webhooks-no-tradingview-com-node-js/
 
 ## More
 
