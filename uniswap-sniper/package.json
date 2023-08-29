@@ -1,0 +1,16 @@
+{
+  "name": "uniswap-sniper",
+  "version": "1.0.0",
+  "description": "A simple sniper bot for Uniswap V3. No guarantees.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ethers": "^6.7.1"
+  }
+}
