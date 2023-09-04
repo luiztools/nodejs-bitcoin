@@ -9,6 +9,13 @@ const USDT_TOKEN = new Token(ChainId.MAINNET, TOKEN_OUT_ADDRESS, 6, 'USDT', 'Tet
 const { ethers } = require("ethers");
 const provider = new ethers.InfuraProvider(NETWORK, INFURA_API_KEY);
 
+function getTokenOrder(tokenIn, tokenOut) {
+    if (ethers.toBigInt(tokenIn) <= ethers.toBigInt(tokenOut))
+        return { token0: tokenIn, token1: tokenOut };
+    else
+        return { token0: tokenOut, token1: tokenIn };
+}
+
 async function preparationCycle() {
 
     const { computePoolAddress, FeeAmount } = require("@uniswap/v3-sdk")
@@ -22,13 +29,10 @@ async function preparationCycle() {
     const IUniswapV3PoolABI = require("@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json");
     const poolContract = new ethers.Contract(currentPoolAddress, IUniswapV3PoolABI.abi, provider);
 
-    const [token0, token1, fee] = await Promise.all([
-        poolContract.token0(),
-        poolContract.token1(),
-        poolContract.fee(),
-    ])
-
-    return { token0, token1, fee };
+    const result = getTokenOrder(TOKEN_IN_ADDRESS, TOKEN_OUT_ADDRESS);
+    result.fee = await poolContract.fee();
+    
+    return result;
 }
 
 async function executionCycle(token0, token1, fee) {
