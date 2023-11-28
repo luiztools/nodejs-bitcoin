@@ -77,7 +77,7 @@ async function buy() {
 async function sell() {
     const data = await call('sell', amountToSell);
     console.log(data);
-    amountToBuy = data.exec_amount *  data.price;
+    amountToBuy = data.exec_amount * data.price;
     return data;
 }
 
@@ -86,10 +86,14 @@ async function call(side, volume) {
 
     const data = {
         market: COINPAIR,
-        volume,
         limited: false,
         auth_token: AUTH_TOKEN
     }
+
+    if (side === "buy")
+        data.volume = volume;
+    else
+        data.amount = volume;
 
     const result = await axios.post(url, data);
     return result.data;
