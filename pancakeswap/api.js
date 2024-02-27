@@ -1,5 +1,5 @@
 const { ethers } = require('ethers');
-const axios = require('axios').default;
+const axios = require('axios');
 
 //WBNB Testnet
 const WBNB_CONTRACT = "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd";
@@ -17,24 +17,16 @@ const ROUTER_CONTRACT = "0xD99D1c33F9fC3444f8101754aBC46c52416550D1";
 const USDT_MAINNET = "0x55d398326f99059fF775485246999027B3197955";
 
 async function getPrice(contract) {
-    const { data } = await axios.get(`https://bsc.api.0x.org/swap/v1/price/?sellToken=${contract}&sellAmount=1000000000000000000&buyToken=${USDT_MAINNET}`);
+    const { data } = await axios.get(
+        `https://bsc.api.0x.org/swap/v1/price?sellToken=${contract}&buyToken=${USDT_MAINNET}&sellAmount=1000000000000000000`,
+        {
+            headers: { "0x-api-key": process.env.API_KEY }
+        });
     return parseFloat(data.price);
 }
 
-async function getBalance(walletAddress, contractAddress, decimals = 18) {
-    const provider = await getProvider();
-    const contract = new ethers.Contract(contractAddress, ["function balanceOf(address) view returns (uint)"], provider);
-    const balance = await contract.balanceOf(walletAddress)
-    return ethers.formatUnits(balance, decimals);
-}
-
-async function getTransaction(hash) {
-    const provider = await getProvider();
-    return provider.getTransactionReceipt(hash);
-}
-
 let provider;
-async function getProvider() {
+function getProvider() {
     if (!provider)
         provider = new ethers.JsonRpcProvider(process.env.PROVIDER_URL);
 
@@ -42,9 +34,9 @@ async function getProvider() {
 }
 
 let walletInstance;
-async function getWallet() {
+function getWallet() {
     if (!walletInstance) {
-        const provider = await getProvider();
+        const provider = getProvider();
         const wallet = ethers.Wallet.fromPhrase(process.env.MNEMONIC);
         walletInstance = wallet.connect(provider);
     }
@@ -52,9 +44,21 @@ async function getWallet() {
     return walletInstance;
 }
 
+async function getBalance(walletAddress, contractAddress, decimals = 18) {
+    const provider = getProvider();
+    const contract = new ethers.Contract(contractAddress, ["function balanceOf(address) view returns (uint)"], provider);
+    const balance = await contract.balanceOf(walletAddress)
+    return ethers.formatUnits(balance, decimals);
+}
+
+async function getTransaction(hash) {
+    const provider = getProvider();
+    return provider.getTransactionReceipt(hash);
+}
+
 async function swapFromBNB(walletAddress, tokenContract, bnbToSpend) {
 
-    const account = await getWallet();
+    const account = getWallet();
     const contract = new ethers.Contract(
         ROUTER_CONTRACT,
         ["function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)"],
@@ -79,7 +83,7 @@ async function swapFromBNB(walletAddress, tokenContract, bnbToSpend) {
 
 async function swapTokens(wallet, tokenFrom, quantity, tokenTo) {
 
-    const account = await getWallet();
+    const account = getWallet();
     const contract = new ethers.Contract(
         ROUTER_CONTRACT,
         ["function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)"],
@@ -105,7 +109,7 @@ async function swapTokens(wallet, tokenFrom, quantity, tokenTo) {
 
 async function swapToBNB(walletAddress, tokenContract, amountIn) {
 
-    const account = await getWallet();
+    const account = getWallet();
     const contract = new ethers.Contract(
         ROUTER_CONTRACT,
         ["function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)"],
@@ -130,7 +134,7 @@ async function swapToBNB(walletAddress, tokenContract, amountIn) {
 }
 
 async function approve(tokenToSend, quantity) {
-    const account = await getWallet();
+    const account = getWallet();
     const contract = new ethers.Contract(
         tokenToSend,
         ["function approve(address _spender, uint256 _value) public returns (bool success)"],

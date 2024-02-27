@@ -13,12 +13,14 @@ A simple swap bot for PancakeSwap. No guarantees.
 
 ## How to Run
 
-1. cd pancakeswap
-2. npm install
-3. copy .env.example as .env
-4. fill .env variables
-5. check the index.js and customize
-6. npm start to run
+1. create free 0x.org plan and get your API Key
+2. git clone
+3. cd pancakeswap
+4. npm install
+5. copy .env.example as .env
+6. fill .env variables
+7. check the index.js and customize
+8. npm start
 
 ## Mais
 
