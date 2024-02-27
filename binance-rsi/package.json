@@ -1,0 +1,16 @@
+{
+  "name": "binance-rsi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config index"
+  },
+  "keywords": [],
+  "author": "LuizTools",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.4"
+  }
+}
