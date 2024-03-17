@@ -1,6 +1,6 @@
 # pancakeswap
 
-A simple swap bot for PancakeSwap. No guarantees.
+A simple swap bot for PancakeSwap V2. No guarantees.
 
 ## AVISOS
 - VOCÊ DEVE TER CONHECIMENTOS BÁSICOS DE LÓGICA DE PROGRAMAÇÃO E DE ALGORITMOS PARA USAR ESTE ROBÔ.

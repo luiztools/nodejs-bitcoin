@@ -1,0 +1,17 @@
+{
+  "name": "uniswap",
+  "version": "1.0.0",
+  "description": "A simple swap bot for Uniswap V3.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "LuizTools",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.7.1"
+  }
+}

@@ -1,6 +1,6 @@
-# uniswap
+# pancakeswap-v3
 
-A simple swap bot for Uniswap V3. No guarantees.
+A simple swap bot for PancakeSwap V3. No guarantees.
 
 ## AVISOS
 - VOCÊ DEVE TER CONHECIMENTOS BÁSICOS DE LÓGICA DE PROGRAMAÇÃO E DE ALGORITMOS PARA USAR ESTE ROBÔ.
@@ -13,7 +13,7 @@ A simple swap bot for Uniswap V3. No guarantees.
 
 ## How to Run
 
-1. cd uniswap
+1. cd pancakeswap-v3
 2. npm install
 3. copy .env.example as .env
 4. fill .env variables
@@ -22,7 +22,7 @@ A simple swap bot for Uniswap V3. No guarantees.
 
 ## Mais
 
-Tutorial no blog: https://www.luiztools.com.br/post/como-criar-bot-trader-para-uniswap-v3-em-node-js/
+Tutorial no blog: https://www.luiztools.com.br/post/como-criar-robo-bot-trader-para-pancakeswap-v3-em-node-js/
 
 Me siga nas redes sociais para novidades: https://about.me/luiztools
 
