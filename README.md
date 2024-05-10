@@ -12,7 +12,7 @@ Simple trader bots for Binance Spot, Binance Futures, Binance Launchpad, Mercado
 - NÃO TENHO ROBÔS DE OUTROS BROKERS, SÓ TENHO ESSES.
 - NÃO DESENVOLVO PARA TERCEIROS
 
-## Intructions & Info
+## Instructions & Info
 
 Check each projects' readme file.
 

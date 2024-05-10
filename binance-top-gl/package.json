@@ -1,17 +1,16 @@
 {
-  "name": "pancakeswap",
+  "name": "binance-top-gl",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config index.js"
+    "start": "node index"
   },
   "keywords": [],
   "author": "LuizTools",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.7",
-    "dotenv": "^16.4.5",
-    "ethers": "^6.11.1"
+    "axios": "^1.6.8",
+    "ws": "^8.17.0"
   }
 }
