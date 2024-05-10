@@ -1,5 +1,5 @@
 # nodejs-bitcoin
-Simple trader bots for Binance Spot, Binance Futures, Binance Launchpad, Mercado Bitcoin, PancakeSwap and Uniswap.
+Simple trader bots for Binance Spot, Binance Futures, Binance Launchpad, BityPreço e Mercado Bitcoin.
 
 ## AVISOS
 
