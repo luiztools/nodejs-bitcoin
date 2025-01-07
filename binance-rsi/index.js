@@ -1,34 +1,45 @@
 //index.js
-const axios = require("axios");
-
-const API_URL = process.env.API_URL;
 const SYMBOL = process.env.SYMBOL;
 const INTERVAL = process.env.INTERVAL;
 const PERIOD = parseInt(process.env.PERIOD);
 
-function RSI(closes, period = 14) {
-    if (closes.length < (period + 1)) throw new Error(`Invalid period for closes length`);
+function averages(closes, period, startIndex) {
+    let gains = 0, losses = 0;
 
-    let gains = 0;
-    let losses = 0;
+    for (let i = 0; i < period && (i + startIndex) < closes.length; i++) {
+        const diff = closes[i + startIndex] - closes[i + startIndex - 1];
 
-    for (let i = 1; i < closes.length; i++) {
-        const diff = closes[i] - closes[i - 1];
         if (diff >= 0)
             gains += diff;
         else
-            losses -= diff;
+            losses += Math.abs(diff);
     }
 
-    const strength = gains / losses;
-    return 100 - (100 / (1 + strength));
+    let avgGains = gains / period;
+    let avgLosses = losses / period;
+    return { avgGains, avgLosses };
+}
+
+function RSI(closes, period) {
+    let { avgGains, avgLosses } = averages(closes, period, 1);
+    
+    for (let i = 2; i < closes.length; i++) {
+        let newAverages = averages(closes, period, i);
+        avgGains = (avgGains * (period - 1) + newAverages.avgGains) / period;
+        avgLosses = (avgLosses * (period - 1) + newAverages.avgLosses) / period;
+    }
+
+    const rs = avgGains / avgLosses;
+    return 100 - (100 / (1 + rs));
 }
 
 
 async function getCandles() {
-    const response = await axios.get(`${API_URL}/v3/klines?symbol=${SYMBOL}&interval=${INTERVAL}&limit=${PERIOD + 1}`);
-    const closes = response.data.map(k => parseFloat(k[4]));
+    const response = await fetch(`https://api.binance.com/api/v3/klines?symbol=${SYMBOL}&interval=${INTERVAL}&limit=100`);
+    const data = await response.json();
+    const closes = data.map(k => parseFloat(k[4]));
     const rsi = RSI(closes, PERIOD);
+    console.clear();
     console.log(rsi);
 }
 

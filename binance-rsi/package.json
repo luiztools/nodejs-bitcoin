@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config index"
+    "start": "node -r dotenv/config index",
+    "gpt": "node -r dotenv/config gpt"
   },
   "keywords": [],
   "author": "LuizTools",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.7",
     "dotenv": "^16.4.4"
   }
 }
