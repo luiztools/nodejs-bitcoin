@@ -42,7 +42,7 @@ async function getAllOrders() {
     // }
 }
 
-async function calcAveragePrice() {
+async function calcResults() {
     const allOrders = await getAllOrders();
 
     const allBuyOrders = allOrders.filter(order => order.side === "BUY" && order.status === "FILLED" && order.workingTime > START_TIME);
@@ -69,4 +69,4 @@ async function calcAveragePrice() {
     console.log(`PnL (%): ${pnl.toFixed(2)}%`);
 }
 
-calcAveragePrice();
+calcResults();
