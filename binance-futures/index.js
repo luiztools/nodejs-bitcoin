@@ -5,13 +5,13 @@ let isOpened = false;
 const api = require("./api");
 
 ws.onmessage = (event) => {
-    process.stdout.write('\033c');
+    console.clear();
     const obj = JSON.parse(event.data);
     console.log(`Symbol: ${obj.s}`);
     console.log(`Mark Price: ${obj.p}`);
 
     const price = parseFloat(obj.p);
-    if (price < 19000 && !isOpened) {
+    if (price < 120000 && !isOpened) {
         console.log('Abrir posição!');
         api.newOrder("BTCUSDT", "0.001", "BUY")
             .then(result => {
@@ -20,7 +20,7 @@ ws.onmessage = (event) => {
             })
             .catch(err => console.error(err));
     }
-    else if (price > 21000 && isOpened) {
+    else if (price > 130000 && isOpened) {
         console.log('Fechar posição!');
         api.newOrder("BTCUSDT", "0.001", "SELL")
             .then(result => {
